@@ -55,9 +55,11 @@ const Form = () => {
 	const isNonMobile = useMediaQuery("(min-width:600px)");
 	const isLogin = pageType === "login";
 	const isRegister = pageType === "register";
+	const errors = {};
 
 	const register = async (values, onSubmitProps) => {
 		// this allows us to send form info with image
+		console.log("register try")
 		const formData = new FormData();
 		for (let value in values) {
 			formData.append(value, values[value]);
@@ -210,6 +212,7 @@ const Form = () => {
 												acceptedFiles[0]
 											)
 										}
+										
 									>
 										{({ getRootProps, getInputProps }) => (
 											<Box
@@ -224,7 +227,7 @@ const Form = () => {
 											>
 												<input {...getInputProps()} />
 												{!values.picture ? (
-													<p>Add Picture Here</p>
+													<p>Add Picture Here *</p>
 												) : (
 													<FlexBetween>
 														<Typography>
